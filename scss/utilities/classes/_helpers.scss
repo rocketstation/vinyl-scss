@@ -1,0 +1,38 @@
+//  [http://nicolasgallagher.com/micro-clearfix-hack]
+//
+@include class('clearfix') {
+  &::after,
+  &::before {
+    content: ' ';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+// hide element
+//
+@include class('hidden') {
+  display: none !important;
+}
+
+// truncate string with ellipsis
+//
+@include class('ellipsis') {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// input wrapper
+// 1. wrap parent container with input
+// 2. hide input
+//
+@include class('input-transparent') {
+  @include position((a: 0), absolute, 1); // 1
+
+  appearance: none; // 2
+  opacity: 0; // 2
+}

@@ -1,0 +1,29 @@
+// create map with color shades
+//
+@function set-color($color, $darkest: 15%, $darken: 5%, $lighten: 5%, $lightest: 15%) {
+  @return (darkest: darken($color, $darkest), darker: darken($color, $darken), default: $color, lighter: lighten($color, $lighten), lightest: lighten($color, $lightest));
+}
+
+// mix black & white
+//
+@function gray($percentage) {
+  @return mix(black, white, $percentage);
+}
+
+// mix custom color with black
+//
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// mix custom color with white
+//
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// truncate '#' symbol from hex color
+//
+@function hex-symbols($hex) {
+  @return unquote(str-slice(inspect($hex), 2));
+}

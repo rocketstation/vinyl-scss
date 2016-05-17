@@ -1,0 +1,35 @@
+// '24 columns' grid inspired by [http://getbootstrap.com/css/#grid]
+//
+@include class('row') {
+  @extend .clearfix;
+}
+
+@include class('col') {
+  float: left;
+
+  @for $i from 0 through 24 {
+    @include state('xs-#{$i}') {
+      width: percentage($i / 24);
+    }
+
+    @include state('xs-offset-#{$i}') {
+      margin-left: percentage($i / 24);
+    }
+  }
+}
+
+@each $breakpoint in ($sm, $md, $lg) {
+  @media screen and (min-width: $breakpoint) {
+    @include class('col') {
+      @for $i from 0 through 24 {
+        @include state('sm-#{$i}') {
+          padding-bottom: percentage($i / 24);
+        }
+
+        @include state('sm-offset-#{$i}') {
+          padding-bottom: percentage($i / 24);
+        }
+      }
+    }
+  }
+}

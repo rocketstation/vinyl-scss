@@ -1,0 +1,5 @@
+// simplify inline svg urls
+// 
+@function url-svg($content) {
+  @return unquote('url(data:image/svg+xml,' + $content + ')');
+}

@@ -1,0 +1,12 @@
+// 1. set width and height in one line
+// 2. set width and height limits in one line
+//
+@mixin size($width, $height, $limit: false) {
+  @if $limit {
+    #{$limit}-height: $height; // 2
+    #{$limit}-width: $width; // 2
+  } @else {
+    height: $height; // 1
+    width: $width; // 1
+  }
+}

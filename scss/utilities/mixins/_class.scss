@@ -1,0 +1,95 @@
+// 1. current namespace prefix
+// 2. true if inside namespace container
+//
+$namespace: null; // 1
+$is-namespace: false; // 2
+
+// 1. current class prefix
+// 2. true if inside class container
+//
+$class: null; // 1
+$is-class: false; // 2
+
+// create class according to oldmen.digital conventions
+//
+@mixin class($title) {
+  $c: $class;
+  $is-n: $is-namespace;
+  $is-c: $is-class;
+
+  @at-root {
+    #{if($namespace, $namespace + ' .', '.') + if($c, $c + '_' + $title, $title)} {
+      $class: if($c, $c + '_' + $title, $title) !global;
+      $is-namespace: $f !global;
+      $is-class: $t !global;
+
+      @content;
+
+      $is-class: $is-c !global;
+      $is-namespace: $is-n !global;
+      $class: $c !global;
+    }
+  }
+}
+
+// create class wrapper according to oldmen.digital conventions
+//
+@mixin wrapper() {
+  @include class('wrapper') {
+    @content;
+  }
+}
+
+// create class content according to oldmen.digital conventions
+//
+@mixin content() {
+  @include class('content') {
+    @content;
+  }
+}
+
+// create class state according to oldmen.digital conventions
+//
+@mixin state($title, $prefix: '__') {
+  @if $is-namespace and $namespace {
+    $n: $namespace;
+
+    &.#{$prefix + $title} {
+      $namespace: $n + '.' + $prefix + $title !global;
+
+      @content;
+
+      $namespace: $n !global;
+    }
+  }
+
+  @if $is-class and $class {
+    &.#{$prefix + $title} {
+      @content;
+    }
+  }
+}
+
+// create namespace according to oldmen.digital conventions
+//
+@mixin namespace($title, $is-global: $f) {
+  $n: $namespace;
+  $is-n: $is-namespace;
+  $is-c: $is-class;
+
+  @at-root {
+    $separator: if($is-global, '#', '.');
+
+    #{if($n, $n + ' '+ $separator + $title, $separator + $title)} {
+      $namespace: if($n, $n + ' ' + $separator + $title, $separator + $title) !global;
+      $is-namespace: $t !global;
+      $is-class: $f !global;
+
+      @content;
+
+      $is-class: $is-c !global;
+      $is-namespace: $is-n !global;
+      $namespace: $n !global;
+    }
+  }
+}

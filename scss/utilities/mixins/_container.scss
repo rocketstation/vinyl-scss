@@ -1,0 +1,18 @@
+// root container
+// 1. set full screen container
+// 2.1 enable vertical scrolling
+// 2.2 disable vertical scrolling
+//
+@mixin container($is-content: true, $is-momentum-scrolling: true) {
+  @include position((a: 0), fixed, 0); // 1
+
+  @if $is-content {
+    overflow: auto; // 2.1
+
+    @if $is-momentum-scrolling {
+      -webkit-overflow-scrolling: touch; // 2.1
+    }
+  } @else {
+    overflow: hidden; // 2.2
+  }
+}

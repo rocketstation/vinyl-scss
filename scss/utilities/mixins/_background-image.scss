@@ -1,0 +1,77 @@
+// set background image to
+// 1. element
+// 2. element:focus
+// 3. element:hover
+// 4. element.__active
+//
+@mixin background-image($icon, $icon-focus-hover: $f, $icon-active: $f) {
+  background-image: $icon; // 1
+
+  @if $icon-focus-hover {
+    @include focus-hover {
+      background-image: $icon-focus-hover; // 2 & 3
+    }
+  }
+
+  @if $icon-active {
+    @include state('active') {
+      background-image: $icon-active; // 4
+    }
+  }
+}
+
+// set background image to
+// 1. element::before
+// 2. element::before:focus
+// 3. element::before:hover
+// 4. element::before.__active
+//
+@mixin background-image-before($icon, $icon-focus-hover: $f, $icon-active: $f) {
+  &::before {
+    background-image: $icon; // 1
+  }
+
+  @if $icon-focus-hover {
+    @include focus-hover() {
+      &::before {
+        background-image: $icon-focus-hover; // 2 & 3
+      }
+    }
+  }
+
+  @if $icon-active {
+    @include state('active') {
+      &::before {
+        background-image: $icon-active; // 4
+      }
+    }
+  }
+}
+
+// set background image to
+// 1. element::after
+// 2. element::after:focus
+// 3. element::after:hover
+// 4. element::after.__active
+//
+@mixin background-image-after($icon, $icon-focus-hover: $f, $icon-active: $f) {
+  &::after {
+    background-image: $icon; // 1
+  }
+
+  @if $icon-focus-hover {
+    @include focus-hover() {
+      &::after {
+        background-image: $icon-focus-hover; // 2 & 3
+      }
+    }
+  }
+
+  @if $icon-active {
+    @include state('active') {
+      &::after {
+        background-image: $icon-active; // 4
+      }
+    }
+  }
+}

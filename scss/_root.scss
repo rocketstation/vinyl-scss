@@ -1,0 +1,31 @@
+@import 'root/animations';
+@import 'root/fonts';
+// @import 'root/angular';
+// @import 'root/mobile';
+
+// 1. remove outline property globally
+//
+:focus {
+  outline: none; // 1
+}
+
+// 1. remove webkit scrollbar globally
+//
+::-webkit-scrollbar {
+  display: none; // 1
+}
+
+// 1. set root font size to 10px to simplify rem usage
+//
+:root {
+  font-size: 10px !important; // 1
+}
+
+// 1. set default font family
+// 2. set default font size
+// 3. set default line height
+//
+body {
+  @include font-sans-serif; // 1
+  @include font-size(1.5rem, 1.8rem); // 2 & 3
+}

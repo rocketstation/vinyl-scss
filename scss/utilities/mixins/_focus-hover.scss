@@ -1,0 +1,8 @@
+// set :focus & :hover states in one line
+// 
+@mixin focus-hover {
+  &:focus,
+  &:hover {
+    @content
+  }
+}

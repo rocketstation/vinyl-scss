@@ -1,0 +1,43 @@
+// 1. create responsive square
+// 2. create content container
+// 3. create responsive rectangles
+// 4. add media queries
+//
+@include class('rectangle') {
+  display: block; // 1
+  padding-bottom: 100%; // 1
+  position: relative; // 1
+  width: 100%; // 1
+
+  @include content {
+    @include position((a: 0), absolute); // 2
+
+    display: block;
+  }
+
+  @for $i from 0 through 5 {
+    @include state('xs-#{100 * ($i / 5)}') {
+      padding-bottom: percentage($i / 5); // 3
+    }
+
+    @include state('xs-#{100 + 100 * ($i / 5)}') {
+      padding-bottom: percentage(1 + $i / 5); // 3
+    }
+  }
+}
+
+@each $breakpoint in ($sm, $md, $lg) {
+  @media screen and (min-width: $breakpoint) {
+    @include class('rectangle') {
+      @for $i from 0 through 5 {
+        @include state('sm-#{100 * ($i / 5)}') {
+          padding-bottom: percentage($i / 5); // 4
+        }
+
+        @include state('sm-#{100 + 100 * ($i / 5)}') {
+          padding-bottom: percentage(1 + $i / 5); // 4
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+// set different offsets from different sides (margin|padding|position) in one line
+//
+@mixin offset($offset, $prefix) {
+  @if $prefix != '' {
+    $prefix: $prefix + '-';
+  }
+  @if map-has-key($offset, 'b') {
+    #{$prefix}bottom: map-get($offset, 'b');
+  }
+  @if map-has-key($offset, 'l') {
+    #{$prefix}left: map-get($offset, 'l');
+  }
+  @if map-has-key($offset, 'r') {
+    #{$prefix}right: map-get($offset, 'r');
+  }
+  @if map-has-key($offset, 't') {
+    #{$prefix}top: map-get($offset, 't');
+  }
+  @if map-has-key($offset, 'h') {
+    #{$prefix}left: map-get($offset, 'h');
+    #{$prefix}right: map-get($offset, 'h');
+  }
+  @if map-has-key($offset, 'v') {
+    #{$prefix}bottom: map-get($offset, 'v');
+    #{$prefix}top: map-get($offset, 'v');
+  }
+  @if map-has-key($offset, '1') {
+    #{$prefix}left: map-get($offset, '1');
+    #{$prefix}top: map-get($offset, '1');
+  }
+  @if map-has-key($offset, '2') {
+    #{$prefix}right: map-get($offset, '2');
+    #{$prefix}top: map-get($offset, '2');
+  }
+  @if map-has-key($offset, '3') {
+    #{$prefix}bottom: map-get($offset, '3');
+    #{$prefix}right: map-get($offset, '3');
+  }
+  @if map-has-key($offset, '4') {
+    #{$prefix}bottom: map-get($offset, '4');
+    #{$prefix}left: map-get($offset, '4');
+  }
+  @if map-has-key($offset, '!t') {
+    #{$prefix}bottom: map-get($offset, '!t');
+    #{$prefix}left: map-get($offset, '!t');
+    #{$prefix}right: map-get($offset, '!t');
+  }
+  @if map-has-key($offset, '!r') {
+    #{$prefix}bottom: map-get($offset, '!r');
+    #{$prefix}left: map-get($offset, '!r');
+    #{$prefix}top: map-get($offset, '!r');
+  }
+  @if map-has-key($offset, '!b') {
+    #{$prefix}left: map-get($offset, '!b');
+    #{$prefix}right: map-get($offset, '!b');
+    #{$prefix}top: map-get($offset, '!b');
+  }
+  @if map-has-key($offset, '!l') {
+    #{$prefix}bottom: map-get($offset, '!l');
+    #{$prefix}right: map-get($offset, '!l');
+    #{$prefix}top: map-get($offset, '!l');
+  }
+  @if map-has-key($offset, 'a') {
+    #{$prefix}bottom: map-get($offset, 'a');
+    #{$prefix}left: map-get($offset, 'a');
+    #{$prefix}right: map-get($offset, 'a');
+    #{$prefix}top: map-get($offset, 'a');
+  }
+}
+
+// set margin offset from different sides in one line
+//
+@mixin margin($offset) {
+  @include offset($offset, 'margin');
+}
+
+// set padding offset from different sides in one line
+//
+@mixin padding($offset) {
+  @include offset($offset, 'padding');
+}
+
+// set position offset from different sides in one line
+// 1. set positioning offset
+// 2. set positioning type
+// 3. set z index
+//
+@mixin position($offset, $position: false, $z-index: false) {
+  @include offset($offset, ''); // 1
+  @if $position {
+    position: $position; // 2
+  }
+  @if $z-index {
+    z-index: $z-index; // 3
+  }
+}

@@ -1,0 +1,25 @@
+// 1. disable ng-animate globally to use it with specific elements only
+//
+.ng-animate {
+  animation: 0s none !important; // 1
+  transition: 0s none !important; // 1
+}
+
+// 1. [https://docs.angularjs.org/api/ng/directive/ngCloak]
+//
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important; // 1
+}
+
+// 1. forse 'Angular Google Maps' to fill parent container
+//
+ui-gmap-google-map,
+.angular-google-map,
+.angular-google-map-container {
+  @include size(100%, 100%); // 1
+}
