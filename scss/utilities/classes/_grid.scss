@@ -1,7 +1,15 @@
 // '24 columns' grid inspired by [http://getbootstrap.com/css/#grid]
 //
 @include class('row') {
-  @extend .clearfix;
+  &::after,
+  &::before {
+    content: ' ';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
 }
 
 @include class('col') {
@@ -18,17 +26,43 @@
   }
 }
 
-@each $breakpoint in ($sm, $md, $lg) {
-  @media screen and (min-width: $breakpoint) {
-    @include class('col') {
-      @for $i from 0 through 24 {
-        @include state('sm-#{$i}') {
-          padding-bottom: percentage($i / 24);
-        }
+@media screen and (min-width: $sm) {
+  @include class('col') {
+    @for $i from 0 through 24 {
+      @include state('sm-#{$i}') {
+        width: percentage($i / 24);
+      }
 
-        @include state('sm-offset-#{$i}') {
-          padding-bottom: percentage($i / 24);
-        }
+      @include state('sm-offset-#{$i}') {
+        margin-left: percentage($i / 24);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $md) {
+  @include class('col') {
+    @for $i from 0 through 24 {
+      @include state('md-#{$i}') {
+        width: percentage($i / 24);
+      }
+
+      @include state('md-offset-#{$i}') {
+        margin-left: percentage($i / 24);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  @include class('col') {
+    @for $i from 0 through 24 {
+      @include state('lg-#{$i}') {
+        width: percentage($i / 24);
+      }
+
+      @include state('lg-offset-#{$i}') {
+        margin-left: percentage($i / 24);
       }
     }
   }

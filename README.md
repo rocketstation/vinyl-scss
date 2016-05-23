@@ -35,7 +35,6 @@ app/
     	...
     scss/
     	...
-
 ```
 #### Resources
 

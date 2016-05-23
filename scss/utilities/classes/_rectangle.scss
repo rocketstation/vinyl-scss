@@ -3,6 +3,8 @@
 // 3. create responsive rectangles
 // 4. add media queries
 //
+$heights: (0, 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 66, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 133, 135, 140, 145, 150, 155, 160, 165, 166, 170, 175, 180, 185, 190, 195, 200);
+
 @include class('rectangle') {
   display: block; // 1
   padding-bottom: 100%; // 1
@@ -15,28 +17,38 @@
     display: block;
   }
 
-  @for $i from 0 through 5 {
-    @include state('xs-#{100 * ($i / 5)}') {
-      padding-bottom: percentage($i / 5); // 3
-    }
-
-    @include state('xs-#{100 + 100 * ($i / 5)}') {
-      padding-bottom: percentage(1 + $i / 5); // 3
+  @each $height in $heights {
+    @include state('xs-#{$height}') {
+      padding-bottom: percentage($height / 100); // 3
     }
   }
 }
 
-@each $breakpoint in ($sm, $md, $lg) {
-  @media screen and (min-width: $breakpoint) {
-    @include class('rectangle') {
-      @for $i from 0 through 5 {
-        @include state('sm-#{100 * ($i / 5)}') {
-          padding-bottom: percentage($i / 5); // 4
-        }
+@media screen and (min-width: $sm) {
+  @include class('rectangle') {
+    @each $height in $heights {
+      @include state('sm-#{$height}') {
+        padding-bottom: percentage($height / 100); // 4
+      }
+    }
+  }
+}
 
-        @include state('sm-#{100 + 100 * ($i / 5)}') {
-          padding-bottom: percentage(1 + $i / 5); // 4
-        }
+@media screen and (min-width: $md) {
+  @include class('rectangle') {
+    @each $height in $heights {
+      @include state('md#{$height}') {
+        padding-bottom: percentage($height / 100); // 4
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  @include class('rectangle') {
+    @each $height in $heights {
+      @include state('lg-#{$height}') {
+        padding-bottom: percentage($height / 100); // 4
       }
     }
   }

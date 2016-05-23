@@ -32,6 +32,22 @@ $is-class: false; // 2
   }
 }
 
+// create class header according to oldmen.digital conventions
+//
+@mixin header() {
+  @include class('header') {
+    @content;
+  }
+}
+
+// create class footer according to oldmen.digital conventions
+//
+@mixin footer() {
+  @include class('footer') {
+    @content;
+  }
+}
+
 // create class wrapper according to oldmen.digital conventions
 //
 @mixin wrapper() {
