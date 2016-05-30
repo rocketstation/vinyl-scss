@@ -32,7 +32,9 @@
 //
 @include class('input-transparent') {
   @include position((a: 0), absolute, 1); // 1
+  @include size(100%, 100%); // 1
 
   appearance: none; // 2
+  display: block;; // 1
   opacity: 0; // 2
 }

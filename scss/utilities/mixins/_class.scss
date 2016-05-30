@@ -90,14 +90,16 @@ $is-class: false; // 2
 //
 @mixin namespace($title, $is-global: $f) {
   $n: $namespace;
+  $c: $class;
   $is-n: $is-namespace;
   $is-c: $is-class;
 
   @at-root {
-    $separator: if($is-global, '#', '.');
+    $separator: if($is-global, '#', if($c, '.' + $c + '_', '.'));
 
-    #{if($n, $n + ' '+ $separator + $title, $separator + $title)} {
+    #{if($n, $n + ' ' + $separator + $title, $separator + $title)} {
       $namespace: if($n, $n + ' ' + $separator + $title, $separator + $title) !global;
+      $class: if($is-global, $c, if($c, $c + '_' + $title, $title)) !global;
       $is-namespace: $t !global;
       $is-class: $f !global;
 
@@ -105,6 +107,7 @@ $is-class: false; // 2
 
       $is-class: $is-c !global;
       $is-namespace: $is-n !global;
+      $class: $c !global;
       $namespace: $n !global;
     }
   }
