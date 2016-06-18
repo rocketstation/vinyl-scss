@@ -5,7 +5,8 @@
 
 // 1. remove outline property globally
 //
-:focus {
+:focus,
+:hover {
   outline: none; // 1
 }
 
