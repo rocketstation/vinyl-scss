@@ -185,7 +185,7 @@ $t: true;
 }
 
 .class {
-  @include margin((''!t': 12px));
+  @include margin(('!t': 12px));
 }
 
 .class {
