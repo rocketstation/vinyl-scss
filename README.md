@@ -173,7 +173,7 @@ $t: true;
 
 ```scss
 .class {
-  @include position((1: 12px), relative);
+  @include position(('1': 12px), relative);
 }
 
 .class {
@@ -185,7 +185,7 @@ $t: true;
 }
 
 .class {
-  @include margin((!t: 12px));
+  @include margin((''!t': 12px));
 }
 
 .class {
@@ -193,7 +193,7 @@ $t: true;
 }
 
 .class {
-  @include padding((1: 18px, 4: 6px));
+  @include padding(('1': 18px, '4': 6px));
 }
 
 .class {
