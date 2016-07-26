@@ -125,7 +125,6 @@ scss/
 @import 'utilities/mixins/class';
 @import 'utilities/mixins/offset';
 @import 'utilities/mixins/size';
-@import 'utilities/mixins/font-face';
 @import 'utilities/mixins/font-size';
 @import 'utilities/mixins/container';
 @import 'utilities/mixins/background-image';
@@ -134,7 +133,6 @@ scss/
 @import 'utilities/functions/inline-data-url';
 @import 'utilities/classes/grid';
 @import 'utilities/classes/rectangle';
-@import 'utilities/classes/alignment';
 @import 'utilities/classes/helpers';
 ```
 
@@ -293,35 +291,6 @@ will be converted to
   max-height: 600px;
   min-width: 2em;
   min-height: 2em;
-}
-```
-
-##### utilities/mixins/font-face.scss
-
-`utilities/mixins/font-face.scss` includes three mixins which allow you to include `ttf`, `otf` or `woff` fonts in one line
-
-```scss
-@include font-face-ttf('My TTF', 'path/to/example.ttf');
-@include font-face-otf('My OTF', 'path/to/example.otf');
-@include font-face-woff('MY WOFF', '$encoded-base64-string');
-```
-
-will be converted to
-
-```css
-@font-face {
-  font-family: 'My TTF';
-  src: url('path/to/example.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'My OTF';
-  src: url('path/to/example.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'My WOFF';
-  src: url('data:application/font-woff;charset=utf-8;base64,...') format('woff');
 }
 ```
 
@@ -531,18 +500,6 @@ $var: #ff4040;
 $var: fff;
 ```
 
-##### utilities/classes/alignment.scss
-
-`utilities/classes/alignment.scss` module was created to gather all css solutions to center elements vertically and horizontally. It includes only 'table' method to align content vertically now. The following code will do the magic:
-
-```html
-<div class="center_v_table>
-  <div class="center_v_table_content>
-    Vertically centered content
-  </div>
-</div>
-```
-
 ##### utilities/classes/grid.scss
 
 Inspired by [bootstrap grid](http://getbootstrap.com/css/#grid) we created its lite 24 columns version and placed it inside `utilities/classes/grid.scss` module. It includes only to main classes `.row` and `.col`. `.col` class has different states which represent its size and offset. [Bootstrap grid example](http://getbootstrap.com/css/#grid-example-basic) with our grid will look as following:
@@ -580,6 +537,8 @@ Inspired by [bootstrap grid](http://getbootstrap.com/css/#grid) we created its l
 
 __NOTE:__ Our grid does the same things as bootstrap grid or any other float grid does. However, we believe that we simplified it as much as possible and left inside only those thing which are needed to implement responsive 24 column grid
 
+__NOTE:__ to use this module you need to uncomment its import inside `utilities.scss`
+
 ##### utilities/classes/rectangle.scss
 
 `utilities/classes/rectangle.scss` allows you to create responsive rectangles and squares and even change their dimensions on breakpoints. Imagine that you need responsive rectangle which proportions will be 1:2 on mobile screens, 1:1 on tablet screens and 1:0.4 on desktop screens. The following code will create it for you:
@@ -591,6 +550,9 @@ __NOTE:__ Our grid does the same things as bootstrap grid or any other float gri
   </div>
 </div>
 ```
+
+__NOTE:__ to use this module you need to uncomment its import inside `utilities.scss`
+
 
 ##### utilities/classes/helpers.scss
 
@@ -852,3 +814,7 @@ will be converted to
 ### Summary
 
 We created this tool to optimize our workflow and published it to save other developers time. Feel free to use entire framework or its separate parts which you will find useful. We will appreciate any feedback which will help us to improve our development. Cheers!
+
+### P.S.
+
+1. We created our code snippets for atom. You can find them inside `snippets.cson` file

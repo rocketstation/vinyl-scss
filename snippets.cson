@@ -1,0 +1,179 @@
+'.source.scss':
+  'OD global namespace':
+    'prefix': 'od-global-namespace'
+    'body':
+      """
+      @include namespace(${1:$app}, $t) {
+        $2
+      }
+      """
+  'OD namespace':
+    'prefix': 'od-namespace'
+    'body':
+      """
+      @include namespace($1) {
+        $2
+      }
+      """
+  'OD class':
+    'prefix': 'od-class'
+    'body':
+      """
+      @include class($1) {
+        $2
+      }
+      """
+  'OD state':
+    'prefix': 'od-state'
+    'body':
+      """
+      @include state($1) {
+        $2
+      }
+      """
+  'OD header':
+    'prefix': 'od-header'
+    'body':
+      """
+      @include header {
+        $1
+      }
+      """
+  'OD footer':
+    'prefix': 'od-footer'
+    'body':
+      """
+      @include footer {
+        $1
+      }
+      """
+  'OD wrapper':
+    'prefix': 'od-wrapper'
+    'body':
+      """
+      @include wrapper {
+        $1
+      }
+      """
+  'OD content':
+    'prefix': 'od-content'
+    'body':
+      """
+      @include content {
+        $1
+      }
+      """
+  'OD focus & hover':
+    'prefix': 'od-focus-hover'
+    'body':
+      """
+      @include focus-hover {
+        $2
+      }
+      """
+  'OD background image':
+    'prefix': 'od-bg-img'
+    'body':
+      """
+      @include background-image($1, $2, $3);
+      """
+  'OD background image before':
+    'prefix': 'od-bg-img-before'
+    'body':
+      """
+      @include background-image-before($1, $2, $3);
+      """
+  'OD background image after':
+    'prefix': 'od-bg -mg-after'
+    'body':
+      """
+      @include background-image-after($1, $2, $3);
+      """
+  'OD font size':
+    'prefix': 'od-font-size'
+    'body':
+      """
+      @include font-size($1, $2);
+      """
+  'OD size':
+    'prefix': 'od-size'
+    'body':
+      """
+      @include size($1, $2, $3);
+      """
+  'OD margin':
+    'prefix': 'od-margin'
+    'body':
+      """
+      @include margin(($1));
+      """
+  'OD padding':
+    'prefix': 'od-padding'
+    'body':
+      """
+      @include padding(($1));
+      """
+  'OD position':
+    'prefix': 'od-position'
+    'body':
+      """
+      @include position((${1:a: 0}), ${2:absolute}, ${3:1});
+      """
+  'OD container':
+    'prefix': 'od-container'
+    'body':
+      """
+      @include container($1, $2);
+      """
+  'OD fn icon':
+    'prefix': 'od-fn-icon'
+    'body':
+      """
+      @function $1($color) {
+        @return '$2';
+      }
+      """
+  'OD var icon':
+    'prefix': 'od-var-icon'
+    'body':
+      """
+      $i-$1-$2: url-svg($3($4));
+      """
+  'OD var color':
+    'prefix': 'od-var-color'
+    'body':
+      """
+      $c-$1: #$2;
+      """
+  'OD var color palette':
+    'prefix': 'od-var-color-palette'
+    'body':
+      """
+      $c-$1: set-color(#$2);
+      """
+  'OD import component':
+    'prefix': 'od-import-component'
+    'body':
+      """
+      @import 'html/components/$1';
+      """
+  'OD import module':
+    'prefix': 'od-import-module'
+    'body':
+      """
+      @import 'html/modules/$1';
+      """
+  'OD import module':
+    'prefix': 'od-import-module'
+    'body':
+      """
+      @import 'html/modules/$1';
+      """
+  'OD media query':
+    'prefix': 'od-media-query'
+    'body':
+      """
+      @media screen and (min-width: $1) {
+        $2
+      }
+      """
