@@ -84,7 +84,7 @@
       @include background-image-before($1, $2, $3);
       """
   'OD background image after':
-    'prefix': 'od-bg -mg-after'
+    'prefix': 'od-bg-img-after'
     'body':
       """
       @include background-image-after($1, $2, $3);
