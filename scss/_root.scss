@@ -49,7 +49,7 @@ body, html {
 
 // 1. reset button min-height
 //
-button {
+button, [type='button'] {
   min-height: 0; // 1
 }
 

@@ -99,6 +99,12 @@
     'prefix': 'od-size'
     'body':
       """
+      @include size($1, $2);
+      """
+  'OD size limit':
+    'prefix': 'od-size-limit'
+    'body':
+      """
       @include size($1, $2, $3);
       """
   'OD margin':
