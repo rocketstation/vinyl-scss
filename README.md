@@ -1,4 +1,4 @@
-# SCSS Conventions [oldmen.digital]
+# SCSS Conventions
 
 Our team specialize in complex web and hybrid mobile applications. 99% of our projects are built with [AngularJS](https://angularjs.org). For last two years we have been working on conventions to simplify our development process. In this repository we try to gather different utilities which simplify bootstrapping, developing and maintaining scss part of all our projects. In addition to these utilities we use [Autoprefixer](https://github.com/postcss/autoprefixer)
 
